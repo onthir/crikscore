@@ -1,0 +1,81 @@
+/* BallCounter.css */
+.ball-counter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  .score {
+    margin-bottom: 10px;
+  }
+  
+
+  .overs-balls {
+    margin-bottom: 20px;
+  }
+  .large-font{
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+  padding: 5px 5px 5px;
+  text-shadow: 2px 2px 2px #000000;
+}
+  
+  .medium-button {
+    font-size: 1em;
+    margin: 5px;
+    padding: 10px;
+    background-color: #4caf50; /* Green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 20%;
+    height: 5%;
+    background-color: rgb(145, 36, 36);
+  }
+  
+  .medium-button:hover {
+    background-color: #45a049;
+  }
+  
+
+  .buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .top-buttons,
+  .bottom-buttons {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .run-button {
+    font-size: 1.2em; /* Increase font size */
+    padding: 8px 15px; /* Increase padding */
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .run-button:hover {
+    background-color: #45a049;
+  }
+
+  /* Update the background colors for specific buttons */
+.run-button[data-type='NB'] {
+    background-color: steelblue;
+  }
+  
+  .run-button[data-type='Wt'] {
+    background-color: red;
+  }
+  
+  .run-button[data-type='Wd'] {
+    background-color: orange;
+  }
