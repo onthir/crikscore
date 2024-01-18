@@ -40,11 +40,14 @@ const handleRunButtonClick = (run) => {
 
 
   const handleResetClick = () => {
-    setOvers(0);
-    setBalls(0);
-    setTotalRuns(0);
-    setWickets(0);
+    const isConfirmed = window.confirm("Are you sure you want to reset?");
+    if (isConfirmed) {
+      setOvers(0);
+      setBalls(0);
+      setTotalRuns(0);
+      setWickets(0);
     setBackgroundColor('rgb(226, 199, 115)');
+    }
   };
 
   const getRandomColor = () => {
