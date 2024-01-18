@@ -8,6 +8,8 @@ const BallCounter = () => {
   const [backgroundColor, setBackgroundColor] = useState('#ffffff'); // Initial background color
   const [totalRuns, setTotalRuns] = useState(0);
   const [wickets, setWickets] = useState(0);
+  const [scoreTable, setScoreTable] = useState([]);
+
 
   const handleBallClick = () => {
     if (balls < 5) {
@@ -15,6 +17,9 @@ const BallCounter = () => {
     } else {
       setOvers(overs + 1);
       setBalls(0);
+      setScoreTable([...scoreTable, { overs: `${overs}.${balls}`, runs: totalRuns }]);
+    
+
     }
     setBackgroundColor(getRandomColor());
   };
@@ -47,8 +52,17 @@ const handleRunButtonClick = (run) => {
       setTotalRuns(0);
       setWickets(0);
     setBackgroundColor('rgb(226, 199, 115)');
+    setScoreTable([]);
+
     }
   };
+  const handleMinusOneAdjClick = () => {
+    setTotalRuns(totalRuns - 1);
+  };
+
+  const handlePlusOneAdjClick = () =>{
+    setTotalRuns(totalRuns + 1);
+  }
 
   const getRandomColor = () => {
     const letters = '0123456789ABCDEF';
@@ -62,6 +76,7 @@ const handleRunButtonClick = (run) => {
   return (
     <div className="ball-counter-container" style={{ backgroundColor }}>
       <div className="score">
+      
         <p className='large-font'>{`Score: ${totalRuns}/${wickets}`}</p>
       </div>
       <div className="overs-balls">
@@ -77,7 +92,14 @@ const handleRunButtonClick = (run) => {
       >
         {run}
       </button>
+      
     ))}
+    <button  className="run-button" onClick={handleMinusOneAdjClick}>
+          -1 Adj
+        </button>
+        <button  className="run-button" onClick={handlePlusOneAdjClick}>
+          +1 Adj
+        </button>
   </div>
   <div className="bottom-buttons">
   {[5, 6, 'Wd', 'Wt', 'NB'].map((run, index) => (
@@ -99,7 +121,40 @@ const handleRunButtonClick = (run) => {
       <button className="medium-button" onClick={handleResetClick}>
           Reset
         </button>
+
+
+        {/* table */}
+        {/* {scoreTable.length > 0 && (
+        <div className="score-table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Overs</th>
+                <th>Runs</th>
+              </tr>
+            </thead>
+            <tbody>
+              {scoreTable.map((score, index) => (
+                <tr key={index}>
+                  <td>{score.overs}</td>
+                  <td>{score.runs}</td>
+                </tr>
+              ))}
+              {overs > 0 && (
+                <tr>
+                  <td>{`${totalRuns}/${wickets > 0 ? wickets : '-'}`}</td>
+                  <td></td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      )} */}
     </div>
+
+
+// table
+
   );
 };
 export default BallCounter;
